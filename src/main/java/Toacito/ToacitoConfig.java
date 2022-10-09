@@ -9,27 +9,6 @@ import net.runelite.client.config.ConfigSection;
 public interface ToacitoConfig extends Config {
 
 	@ConfigSection(
-			name = "Akkha Path",
-			description = "Settings for Akkha Path",
-			position = 0
-	)
-	String akkhaPathSection = "akkhaPath";
-
-	@ConfigSection(
-			name = "Warden P1 and P2",
-			description = "Settings for Watdens P1 and P2",
-			position = 9
-	)
-	String wardenP12Section = "wardenP12";
-
-	@ConfigSection(
-			name = "Warden P3 and P4",
-			description = "Settings for wareden P3 and P4",
-			position = 10
-	)
-	String wardenP34Section = "wardenP34";
-
-	@ConfigSection(
 			name = "Lobby 1",
 			description = "Settings for first Lobby",
 			position = 11
@@ -42,25 +21,6 @@ public interface ToacitoConfig extends Config {
 			position = 12
 	)
 	String lobby2Section = "lobby2";
-
-
-	@ConfigItem(
-			position = 1,
-			keyName = "obelisko",
-			name = "Obelisk",
-			description = "Counter for mining Obelisk at Akkha Path",
-			section = akkhaPathSection
-	)
-	default boolean obeliskConfig() { return true; }
-
-	@ConfigItem(
-			position = 1,
-			keyName = "pikachus",
-			name = "Electric Skull",
-			description = "Highlight Electric Skull destination Tile",
-			section = wardenP12Section
-	)
-	default boolean pikachusConfig() { return true; }
 
 	//--------------------------
 	@ConfigItem(
@@ -115,13 +75,5 @@ public interface ToacitoConfig extends Config {
 
 	//--------------------------
 
-	@ConfigItem(
-			position = 1,
-			keyName = "pisoPosicion",
-			name = "Floor Position",
-			description = "Remember floor attack after skulls",
-			section = wardenP34Section
-	)
-	default boolean floorPosition() {return true;}
 
 }

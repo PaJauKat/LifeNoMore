@@ -70,7 +70,4 @@ public class ToacitoPlugin extends Plugin {
 	void onGameObjectSpawned(GameObjectSpawned event){
 		this.lobby.onGameObjectSpawned(event);
 	}
-
-
-
 }
