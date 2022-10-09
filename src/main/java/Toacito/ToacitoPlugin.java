@@ -1,20 +1,12 @@
 package Toacito;
 
-import Toacito.AkkhaPath.AkkhaPath;
 import Toacito.lobby.Lobby;
-import Toacito.wardenP12.WardenP2;
-import Toacito.wardenP34.WardenP3;
 import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
-import net.runelite.api.events.AnimationChanged;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
-import net.runelite.api.events.GraphicsObjectCreated;
-import net.runelite.api.events.NpcDespawned;
-import net.runelite.api.events.NpcSpawned;
-import net.runelite.api.events.ProjectileMoved;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -30,15 +22,6 @@ public class ToacitoPlugin extends Plugin {
 
 	@Inject
 	private ToacitoConfig config;
-
-	@Inject
-	private AkkhaPath akkhaPath;
-
-	@Inject
-	private WardenP2 wardenP2;
-
-	@Inject
-	private WardenP3 wardenP3;
 
 	@Inject
 	private Lobby lobby;
@@ -57,7 +40,7 @@ public class ToacitoPlugin extends Plugin {
 	@Override
 	protected void startUp(){
 		if (this.rooms==null){
-			this.rooms=new Sala[]{ (Sala) this.akkhaPath,(Sala) this.wardenP2,(Sala) this.wardenP3};
+			this.rooms=new Sala[]{}; //add rooms
 
 			for(Sala wea: this.rooms){
 				wea.init();
@@ -75,43 +58,12 @@ public class ToacitoPlugin extends Plugin {
 
 	@Subscribe
 	void onGameStateChanged(GameStateChanged event){
-		this.wardenP2.onGameStateChanged(event);
 		this.lobby.onGameStateChanged(event);
-	}
-
-
-
-	@Subscribe
-	void onNpcSpawned(NpcSpawned event){
-		this.akkhaPath.onNpcSpawned(event);
-		this.wardenP2.onNpcSpawned(event);
-
-	}
-
-	@Subscribe
-	void onNpcDespawned(NpcDespawned event){
-		this.akkhaPath.onNpcDespawned(event);
 	}
 
 	@Subscribe
 	void onGameTick(GameTick event)throws Exception{
-		this.akkhaPath.onGameTick(event);
-		this.wardenP2.onGameTick(event);
 		this.lobby.onGameTick(event);
-	}
-	@Subscribe
-	void onGraphicsObjectCreated(GraphicsObjectCreated event){
-		this.akkhaPath.onGraphicsObjectCreated(event);
-	}
-
-	@Subscribe
-	void onAnimationChanged(AnimationChanged event){
-		this.wardenP3.onAnimationChanged(event);
-	}
-
-	@Subscribe
-	void onProjectileMoved(ProjectileMoved event){
-		this.wardenP2.onProjectileMoved(event);
 	}
 
 	@Subscribe
