@@ -1,4 +1,4 @@
-# TOA Modern
+# TOA Modern: Life no more
 
 - Let you hide "Choose" option on both supplies Bundles
 
